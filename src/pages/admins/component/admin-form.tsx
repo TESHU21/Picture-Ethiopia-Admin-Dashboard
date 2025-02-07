@@ -9,41 +9,26 @@ type FormValues = z.infer<typeof formSchema>;
 
 // form schema for adding admins
 const formSchema = z.object({
-  fullName: z.string().min(1),
-  phoneNumber: z
-    .string()
-    .refine(
-      (value) => /^(\+251|0)\d{9}$/.test(value),
-      "Please enter a valid phone number",
-    ),
+  
   email: z.string().email(),
   password: z.string().min(6, {
     message: "password must be at least 6 characters.",
   }),
-  role: z.union([z.literal("Admin"), z.literal("Super Admin")]),
 });
 
 // form schema when in editing mode
 const editFormSchema = z.object({
-  fullName: z.string().min(1),
-  phoneNumber: z
-    .string()
-    .refine(
-      (value) => /^(\+251|0)\d{9}$/.test(value),
-      "Please enter a valid phone number",
-    ),
+  
   email: z.string().email(),
 
-  role: z.union([z.literal("Admin"), z.literal("Super Admin")]),
 });
 
 const AdminForm = ({ admin, submitFn, isPending, error }: AdminFormProps) => {
   // default values
   const defaultValues = {
-    fullName: admin ? admin.fullName : "",
-    phoneNumber: admin ? `0${admin.phoneNumber}` : "",
+   
     email: admin ? admin.email : "",
-    role: admin ? admin.role : "",
+  
     password: "",
   };
 
