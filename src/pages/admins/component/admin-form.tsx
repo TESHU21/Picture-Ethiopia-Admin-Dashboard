@@ -3,7 +3,6 @@ import { z } from "zod";
 import FormComp from "@/components/form/form-comp";
 import { adminFormFields } from "./form-data";
 import { type AdminFormProps } from "./edit-admin";
-import { slicePhoneNumber } from "@/pages/login/utils/validator";
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -40,10 +39,9 @@ const AdminForm = ({ admin, submitFn, isPending, error }: AdminFormProps) => {
   // submit handler function
   function handleSubmit(values: FormValues) {
     // remove the "0" or "+251" from a phone number
-    const phoneNumber = slicePhoneNumber(values.phoneNumber);
 
     // submit the data
-    submitFn({ ...values, _id: admin?._id, phoneNumber });
+    submitFn({values});
   }
   return (
     <div>

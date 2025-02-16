@@ -9,10 +9,8 @@ import { useQuery } from "@tanstack/react-query";
 
 export interface IAdmin {
   _id?: string;
-  fullName: string;
   email: string;
-  phoneNumber: string;
-  role: "Admin" | "Super Admin";
+  password: string;
   status?: string;
   createdAt?: Date;
 }

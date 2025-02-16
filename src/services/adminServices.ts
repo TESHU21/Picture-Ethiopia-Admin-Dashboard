@@ -26,11 +26,11 @@ export const login = async (
   if (data.token) {
     sessionStorage.setItem("token", JSON.stringify(data.token));
     sessionStorage.setItem("id", JSON.stringify(data.admin._id));
-    sessionStorage.setItem(
-      "userName",
-      JSON.stringify(`${data.admin.fullName}`),
-    );
-    sessionStorage.setItem("userRole", JSON.stringify(data.admin.role));
+    // sessionStorage.setItem(
+    //   "userName",
+    //   JSON.stringify(`${data.admin.fullName}`),
+    // );
+    // sessionStorage.setItem("userRole", JSON.stringify(data.admin.role));
   }
 
   return data;
